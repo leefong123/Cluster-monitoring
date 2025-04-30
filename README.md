@@ -69,13 +69,13 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 
 ![image](https://github.com/user-attachments/assets/8f8e1e51-0fb2-4fd5-a4e1-32aaf207c352)
 
-#### AlertManager received alerts for container restrats
+#### AlertManager received alerts for container restarts
 
 ![image](https://github.com/user-attachments/assets/0734e49f-93e4-45cb-8c6d-05c1711d4fc7)
 
 
 
-#### To access the Application, you need to port forward to Kubernetes Service from local host
+#### To access the application, you need to port forward to Kubernetes service from local host
 
 k port-forward service/myflask-service 18001:8001&
 
