@@ -1,0 +1,40 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: flask-app-rules
+  namespace: monitoring
+  labels:
+    release: kube-prom-stack  # prometheus
+spec:
+  groups:
+    - name: flask-app-rules-alerts
+      rules:
+        - alert: TooManyHttpErrors
+          expr: increase(http_errors_total[5m]) >= 20
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High error rate in Flask app"
+            description: "More than 20 HTTP errors in the last 5 minutes for Flask app."
+
+        - alert: DeploymentNotFullyAvaliable
+          expr: kube_deployment_status_replicas_available{deployment="myflask", namespace="default"} < kube_deployment_spec_replicas{deployment="myflask", namespace="default"}
+          for: 2m
+          labels:
+            severity: critial
+          annotations:
+            summary: "Deployment MyFlask is not fully available"
+            description: "Only {{ $value }} pods are running for myFlask app in default namespace."
+
+        - alert: PodRestartedTooManyTimes
+          expr: increase(kube_pod_container_status_restarts_total{container="myflask-container", namespace="default"}[5m]) > 2 
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Pod in MyFlask deployment is restarting frequently "
+            description: "Pod {{ $labels.pod }} in the MyFlask deployment has restarted more than 3 times within a minutes."
+
+
+

@@ -1,0 +1,49 @@
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+from flask import Flask, Response, jsonify
+import sys
+import random
+import time
+import os
+
+app = Flask(__name__)
+
+# Metrics
+TOTAL_HTTP_REQUESTS = Counter('http_requests_total', 'Total number of HTTP requests')
+TOTAL_HTTP_ERRORS = Counter('http_errors_total', 'Total number of HTTP errors')
+
+@app.route('/')
+def home():
+    TOTAL_HTTP_REQUESTS.inc()
+    return jsonify({"message": "Hello from Prometheus-monitored app!"})
+
+@app.route('/error')
+def error():
+    TOTAL_HTTP_REQUESTS.inc()
+    TOTAL_HTTP_ERRORS.inc()
+    return jsonify({"error": "Something went wrong"}), 500
+
+@app.route('/metrics')
+def metrics():
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
+if __name__ == '__main__':
+    random_file = "./healthy"
+    if os.path.exists(random_file):
+        os.remove(random_file)
+    random_no = random.randint(2,6)
+    print(f"My random no. is {random_no}")
+    if (random_no % 2) > 0:
+        with open(random_file, "w") as file:
+            file.write("Happy")
+    else:
+        time.sleep(60 * 60 )
+        
+    app.run(host='0.0.0.0', port=10000)
+
+
+
+
+
+
+
+

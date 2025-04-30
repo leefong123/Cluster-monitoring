@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: myflask-servicemonitor
+  namespace: monitoring
+  labels:
+    release: kube-prom-stack
+spec:
+  selector:
+    matchLabels:
+      app: myflask-service
+  namespaceSelector:
+    matchNames:
+      - default
+  endpoints:
+    - port: myflask-service-port
+      path: /metrics
+      interval: 15s
+

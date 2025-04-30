@@ -1,0 +1,9 @@
+grafana:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 2Gi
+    storageClassName: standard  
+  adminPassword: admin  
+

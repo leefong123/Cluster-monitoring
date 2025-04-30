@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myflask-deployment
+  labels:
+    deployment: myflask
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myflask
+  template:
+    metadata:
+      labels:
+        app: myflask
+    spec:
+      containers:
+        - name: myflask-container
+          image: myflask
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            exec: 
+              command:
+                - cat
+                - /app/healthy
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            failureThreshold: 2
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myflask-service
+  labels:
+    app: myflask-service
+    #annotations: 
+    #prometheus.io/scrape: "true"
+    #prometheus.io/port: "8000"
+    #prometheus.io/path: "/metrics"
+spec:
+  selector:
+    app: myflask
+  ports:
+    - name: myflask-service-port
+      protocol: TCP
+      port: 8001
+      targetPort: 8000
+        #type: NodePort
+
