@@ -40,9 +40,11 @@ Follow the instructions to install modules as per required
 
 
 ### To access the UI for Prometheus, Grafana, AlertManager, ArgoCD and MyFlask Application , you need to port forward from your local machine to Kubernetes services
-E.g. kubectl port-forward service/argocd-server -n monitoring  18080:80 & 
+E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 & 
 
 
+
+### Create the Application in ArgoCD with the following details. It will Kubernetes manifests from GitHub repo to the minikube.
 
 ![image](https://github.com/user-attachments/assets/1bed5ad9-437c-4b3d-b48e-6a9f0003318b)
 
