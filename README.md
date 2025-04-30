@@ -44,18 +44,20 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 
 
 
-### Create the Application in ArgoCD with the following details. It will pull Kubernetes manifests from GitHub repo to the Minikube. Detalied instructions of deploying Application - please refer to ArgoCD documentation.
+### Create the Application in ArgoCD using the following details. It will pull Kubernetes manifests from a GitHub repo and deploy them to Minikube. For detalied instruction on deploying Application, please refer to the ArgoCD documentation
 
 ![image](https://github.com/user-attachments/assets/1bed5ad9-437c-4b3d-b48e-6a9f0003318b)
 
 
-### 
+### After the application is deployed to Minikube, it will show as synchornized
 
 ![image](https://github.com/user-attachments/assets/10a4774f-fe42-4aef-916f-45e07b839572)
 
+### Pods are being created on Minikube
 
 ![image](https://github.com/user-attachments/assets/a6a3fe00-b868-4ac1-81f9-3dfb158355e9)
 
+## 
 
 ![image](https://github.com/user-attachments/assets/9041f5bc-bd9b-4c26-8128-92e68164859d)
 
