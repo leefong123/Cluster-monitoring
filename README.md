@@ -1,6 +1,8 @@
 # Cluster-monitoring
 Use Prometheus to monitor a containerized application running on Minikube within VMware Workstation
-
+  a. Track HTTP requests and automate alerting when HTTP errors are detected
+  b. Monitor container restarts within the pods, and automate alerting
+  
 # Setting up the environment
 1. Install Python3
 2. Install Docker
@@ -34,15 +36,11 @@ or
 
 # To run the application on your machine
  python3 myFlask.py
+Follow the instructions to install modules as per required
 
-Follow the instructions to install modules as per required.
-
-==============================================================================================================
 
 # To access the UI for Prometheus, Grafana, AlertManager, ArgoCD and MyFlask Application , you need to port forward from your local machine to Kubernetes services
-
 E.g. kubectl port-forward service/argocd-server -n monitoring  18080:80 & 
 
-==============================================================================================================
 
 
