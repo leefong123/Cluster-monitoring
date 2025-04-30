@@ -49,3 +49,30 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 ![image](https://github.com/user-attachments/assets/1bed5ad9-437c-4b3d-b48e-6a9f0003318b)
 
 
+### 
+
+![image](https://github.com/user-attachments/assets/10a4774f-fe42-4aef-916f-45e07b839572)
+
+
+![image](https://github.com/user-attachments/assets/a6a3fe00-b868-4ac1-81f9-3dfb158355e9)
+
+
+![image](https://github.com/user-attachments/assets/9041f5bc-bd9b-4c26-8128-92e68164859d)
+
+
+
+![image](https://github.com/user-attachments/assets/8f8e1e51-0fb2-4fd5-a4e1-32aaf207c352)
+
+
+![image](https://github.com/user-attachments/assets/0734e49f-93e4-45cb-8c6d-05c1711d4fc7)
+
+
+![image](https://github.com/user-attachments/assets/28984e54-d240-4fb5-a68f-148c6b7cc345)
+
+
+
+
+k port-forward service/myflask-service --address 0.0.0.0 18001:8001&
+
+
+
