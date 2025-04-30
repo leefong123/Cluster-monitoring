@@ -95,7 +95,7 @@ Key in http://local-host-ip-address:18001/error to generate errors
 ![image](https://github.com/user-attachments/assets/c3277383-c923-4b6c-9564-ecf6e650eb08)
 
 
-#### Prometheus is pending to fire an alert because more than 20 HTTP errors were detected within 5 minutes
+#### Prometheus is pending to fire an alert because more than 20 HTTP errors were detected within 5 minutes  
 
 ![image](https://github.com/user-attachments/assets/06feb810-7076-4dc9-bd7c-28910f1744af)
 
