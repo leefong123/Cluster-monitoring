@@ -57,14 +57,15 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 
 ![image](https://github.com/user-attachments/assets/a6a3fe00-b868-4ac1-81f9-3dfb158355e9)
 
-## 
+## To simulate container restarts within the pods, a workaround was added to make the application to restart so that Prometheus can detect the restarts and trigger alerts
 
 ![image](https://github.com/user-attachments/assets/9041f5bc-bd9b-4c26-8128-92e68164859d)
 
-
+## Prometheus detected that application had restarted and the rule conditions were met, therefore, it fired alerts
 
 ![image](https://github.com/user-attachments/assets/8f8e1e51-0fb2-4fd5-a4e1-32aaf207c352)
 
+## AlertManager received alerts for container restrats
 
 ![image](https://github.com/user-attachments/assets/0734e49f-93e4-45cb-8c6d-05c1711d4fc7)
 
