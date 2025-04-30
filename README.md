@@ -3,7 +3,7 @@ Use Prometheus to monitor a containerized application running on Minikube within
   a. Track HTTP requests and automate alerting when HTTP errors are detected
   b. Monitor container restarts within the pods, and automate alerting
   
-### Setting up the environment
+#### Setting up the environment
 1. Install Python3
 2. Install Docker
 3. Install Git
@@ -34,15 +34,13 @@ or
 14b. kubectl get po -n default
 
 
-### To run the application on your machine
+### To run the application on your local host
  python3 myFlask.py
 Follow the instructions to install modules as per required
 
 
-### To access the UI for Prometheus, Grafana, AlertManager, ArgoCD and MyFlask Application , you need to port forward from your local machine to Kubernetes services
+### To access the UI for Prometheus, Grafana, AlertManager, ArgoCD and MyFlask Application , you need to port forward from your local host to Kubernetes services
 E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 & 
-
-
 
 ### Create the Application in ArgoCD using the following details. It will pull Kubernetes manifests from a GitHub repo and deploy them to Minikube. For detalied instruction on deploying Application, please refer to the ArgoCD documentation
 
