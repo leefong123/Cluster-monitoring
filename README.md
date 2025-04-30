@@ -74,12 +74,23 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 ![image](https://github.com/user-attachments/assets/0734e49f-93e4-45cb-8c6d-05c1711d4fc7)
 
 
-![image](https://github.com/user-attachments/assets/28984e54-d240-4fb5-a68f-148c6b7cc345)
 
-
-
+#### To access the Application, you need to port forward to local host to Kubernetes Service
 
 k port-forward service/myflask-service --address 0.0.0.0 18001:8001&
 
+#### The application has not received any HTTP requests
+
+![image](https://github.com/user-attachments/assets/28984e54-d240-4fb5-a68f-148c6b7cc345)
+
+#### To access the application and generate HTTP requests
+
+Open web browser, and key in http://<localhost ip address>:18001/  
+
+Keep reloading the same page to generate HTTP requests  
+
+Key in http://192.168.244.128:18002/error to generate errors
+
+#### 
 
 
