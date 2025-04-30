@@ -1,5 +1,5 @@
 ### Cluster-monitoring
-Use Prometheus to monitor a containerized application running on Minikube within VMware Workstation  
+Use Prometheus to monitor a containerized application running on Minikube within a VM
 
   a. Track HTTP requests and automate alerting when HTTP errors are detected  
   
