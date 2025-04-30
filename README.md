@@ -77,7 +77,7 @@ E.g. kubectl port-forward service/argocd-server -n argocd  10000:80 &
 
 #### To access the Application, you need to port forward to Kubernetes Service from local host
 
-k port-forward service/myflask-service --address 0.0.0.0 18001:8001&
+k port-forward service/myflask-service 18001:8001&
 
 #### The application has not received any HTTP requests
 
@@ -91,6 +91,21 @@ Keep reloading the same page to generate HTTP requests
 
 Key in http://local-host-ip-address:18001/error to generate errors
 
-#### 
+
+![image](https://github.com/user-attachments/assets/c3277383-c923-4b6c-9564-ecf6e650eb08)
+
+
+#### Prometheus is pending to fire an alert because more than 20 HTTP errors were detected within 5 minutes
+
+![image](https://github.com/user-attachments/assets/06feb810-7076-4dc9-bd7c-28910f1744af)
+
+
+![image](https://github.com/user-attachments/assets/755a8028-e8dd-49f6-b84f-bf7bfada82c8)
+
+
+#### AlertManager received the too many HTTP errors alert
+![image](https://github.com/user-attachments/assets/65ac9e9a-61ef-4e3e-b282-afeedd5241d0)
+
+
 
 
