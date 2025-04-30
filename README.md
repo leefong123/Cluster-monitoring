@@ -1,7 +1,10 @@
 ### Cluster-monitoring
-Use Prometheus to monitor a containerized application running on Minikube within VMware Workstation
-  a. Track HTTP requests and automate alerting when HTTP errors are detected
-  b. Monitor container restarts within the pods, and automate alerting
+Use Prometheus to monitor a containerized application running on Minikube within VMware Workstation  
+
+  a. Track HTTP requests and automate alerting when HTTP errors are detected  
+  
+  b. Monitor container restarts within the pods, and automate alerting  
+  
   
 #### Setting up the environment
 1. Install Python3
@@ -29,13 +32,16 @@ Use Prometheus to monitor a containerized application running on Minikube within
 13 kubectl create -f deploy-myflask.yml
 
 #### To monitor if your pods are running
-14a ./gp.sh
-or
+14a ./gp.sh  
+
+or  
+
 14b. kubectl get po -n default
 
 
 #### To run the application on your local host
- python3 myFlask.py
+ python3 myFlask.py  
+ 
 Follow the instructions to install modules as per required
 
 
