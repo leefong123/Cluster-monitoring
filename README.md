@@ -2,9 +2,47 @@
 Use Prometheus to monitor a containerized application running on Minikube within VMware Workstation
 
 # Setting up the environment
-1. Install Minikube
-2. Install Prometheus Operator onto Minilkube
-3. Install Python3
-4. Install ArgoCD onto Minikube
+1. Install Python3
+2. Install Docker
+3. Install Git
+4. Install Minikube
+5. Install helm
+6. Install Prometheus Operator onto Minilkube
+7. Install ArgoCD onto Minikube
+8. Clone this repo 
+
+# To build application image 
+9. docker build -t myflask .
+
+# Load the image from docker registry to minikube
+10. minikube image load myflask 
+
+# Deploy Service Monitor to monitor the application service
+11. kubectl create -f myflask-servicemonitor.yml 
+
+# Deploy Alerting rules
+12. kubectl create -f myflask-alertrule.yml
+
+# Create application deployment and service
+13 kubectl create -f deploy-myflask.yml
+
+# To monitor if your pods are running
+14a ./gp.sh
+or
+14b. kubectl get po -n default
+
+
+# To run the application on your machine
+ python3 myFlask.py
+
+Follow the instructions to install modules as per required.
+
+==============================================================================================================
+
+# To access the UI for Prometheus, Grafana, AlertManager, ArgoCD and MyFlask Application , you need to port forward from your local machine to Kubernetes services
+
+E.g. kubectl port-forward service/argocd-server -n monitoring  18080:80 & 
+
+==============================================================================================================
 
 
