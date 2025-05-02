@@ -12,10 +12,10 @@ b. Monitor container restarts within the pods, and automate alerting (Completed 
 2. Install Docker
 3. Install Git
 4. Install Minikube
-5. Install helm
-6. Install Prometheus Operator 
-7. Install ArgoCD 
-8. Clone this repo 
+5. Install kubectl
+6. Install helm
+7. Install Prometheus Operator 
+8. Install ArgoCD 
 
 #### To build application image 
 9. docker build -t myflask .
