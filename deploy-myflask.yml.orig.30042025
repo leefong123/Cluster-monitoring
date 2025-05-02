@@ -20,6 +20,15 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 8000
+          livenessProbe:
+            exec: 
+              command:
+                - cat
+                - /app/healthy
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            failureThreshold: 2
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service

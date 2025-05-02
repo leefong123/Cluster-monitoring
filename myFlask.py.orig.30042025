@@ -27,6 +27,16 @@ def metrics():
     return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 if __name__ == '__main__':
+    random_file = "./healthy"
+    if os.path.exists(random_file):
+        os.remove(random_file)
+    random_no = random.randint(2,6)
+    print(f"My random no. is {random_no}")
+    if (random_no % 2) > 0:
+        with open(random_file, "w") as file:
+            file.write("Happy")
+    else:
+        time.sleep(60 * 60 )
     app.run(host='0.0.0.0', port=8000)
 
 

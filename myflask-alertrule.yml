@@ -34,7 +34,7 @@ spec:
             severity: critical
           annotations:
             summary: "Pod in MyFlask deployment is restarting frequently "
-            description: "Pod {{ $labels.pod }} in the MyFlask deployment has restarted more than 3 times within a minutes."
+            description: "Pod {{ $labels.pod }} in the MyFlask deployment has restarted more than 2 times within 5 minutes."
 
 
 

@@ -1,9 +1,9 @@
-### This is a simple project for hands-on practice that explores using Prometheus to monitor a containerized application running on a Kubernetes cluster (Minikube).
-a. Track HTTP requests and automate alerting when HTTP errors are detected (Completed on 30 April 2025)
-  
-b. Monitor container restarts within the pods, and automate alerting (Completed on 30 April 2025)
+#### Use prometheus to monitor a containerized application running on a Kubernetes cluster (Minikube).
 
-
+  History:
+  **30 April 2025**
+   - Track HTTP requests and automate alerting when HTTP errors are detected  
+   - Monitor container restarts within the pods, and automate alerting  
 
 
   
