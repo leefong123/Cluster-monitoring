@@ -18,7 +18,7 @@ spec:
             summary: "High error rate in Flask app"
             description: "More than 20 HTTP errors in the last 5 minutes for Flask app."
 
-        - alert: DeploymentNotFullyAvaliable
+        - alert: DeploymentNotFullyAvaliable   ## to be tested
           expr: kube_deployment_status_replicas_available{deployment="myflask", namespace="default"} < kube_deployment_spec_replicas{deployment="myflask", namespace="default"}
           for: 2m
           labels:
@@ -36,5 +36,11 @@ spec:
             summary: "Pod in MyFlask deployment is restarting frequently "
             description: "Pod {{ $labels.pod }} in the MyFlask deployment has restarted more than 2 times within 5 minutes."
 
-
-
+        - alert: TestHighCPUUsageOnMinikube         ## to be tested
+          expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+          for: 1m
+          labels:
+            severity: Critical
+          annotations:
+            summary: "-- Minikube- High CPU Usage on  {{ $labels.instance }}"
+            description: "-- Minikube -- CPU Usage is above threshold (%%%)for 1 minute"
