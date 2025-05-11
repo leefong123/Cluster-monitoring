@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1beta1
+kind: AlertmanagerConfig
+metadata:
+  name: webhook-alert-config
+  namespace: monitoring
+spec:
+  route:
+    receiver: default-receiver
+    routes:
+      - match:
+        severity: critical
+        receiver: webhook-receiver
+
+  receivers:
+    - name: default-receiver
+      Webhookconfigs:
+        - url: ''
+
+    - name: webhook-receiver
+      WebhookConfigs:
+        - url: 'htt://localhost:5000/alert'
+

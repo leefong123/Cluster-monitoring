@@ -22,7 +22,7 @@ spec:
           expr: kube_deployment_status_replicas_available{deployment="myflask", namespace="default"} < kube_deployment_spec_replicas{deployment="myflask", namespace="default"}
           for: 2m
           labels:
-            severity: critial
+            severity: critical
           annotations:
             summary: "Deployment MyFlask is not fully available"
             description: "Only {{ $value }} pods are running for myFlask app in default namespace."
@@ -40,7 +40,7 @@ spec:
           expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
           for: 1m
           labels:
-            severity: Critical
+            severity: critical
           annotations:
             summary: "-- Minikube- High CPU Usage on  {{ $labels.instance }}"
             description: "-- Minikube -- CPU Usage is above threshold (%%%)for 1 minute"

@@ -5,7 +5,7 @@
 import boto3
 import sys
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
     print("Usage: python script.py <function name> <role name>")
     sys.exit(1)
 
