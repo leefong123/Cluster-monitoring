@@ -14,15 +14,18 @@ spec:
           for: 1m
           labels:
             severity: warning
+            namespace: monitoring
           annotations:
             summary: "High error rate in Flask app"
             description: "More than 20 HTTP errors in the last 5 minutes for Flask app."
 
-        - alert: DeploymentNotFullyAvaliable   ## to be tested
+        - alert: DeploymentNotFullyAvailable   ## to be tested
+          # expr: kube_deployment_status_replicas_available{deployment="myflask", namespace="default"} < on(deployment, namespace) kube_deployment_spec_replicas{deployment="myflask", namespace="default"}
           expr: kube_deployment_status_replicas_available{deployment="myflask", namespace="default"} < kube_deployment_spec_replicas{deployment="myflask", namespace="default"}
           for: 2m
           labels:
             severity: critical
+            namespace: monitoring
           annotations:
             summary: "Deployment MyFlask is not fully available"
             description: "Only {{ $value }} pods are running for myFlask app in default namespace."
@@ -32,15 +35,19 @@ spec:
           for: 1m
           labels:
             severity: critical
+            namespace: monitoring
           annotations:
             summary: "Pod in MyFlask deployment is restarting frequently "
             description: "Pod {{ $labels.pod }} in the MyFlask deployment has restarted more than 2 times within 5 minutes."
 
-        - alert: TestHighCPUUsageOnMinikube         ## to be tested
-          expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+    - name: custom-sys-rules-alerts
+      rules:
+        - alert: TestHighCPUUsage             
+          expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 0     ## 0 is for testing only 
           for: 1m
           labels:
             severity: critical
+            namespace: monitoring
           annotations:
-            summary: "-- Minikube- High CPU Usage on  {{ $labels.instance }}"
-            description: "-- Minikube -- CPU Usage is above threshold (%%%)for 1 minute"
+            summary: " -- Testing -- High CPU Usage on  {{ $labels.instance }}"
+            description: "-- Testing -- CPU Usage is above threshold 0% for 1 minute"

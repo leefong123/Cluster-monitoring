@@ -5,14 +5,15 @@
 import boto3
 import sys
 
-if len(sys.argv) < 3:
-    print("Usage: python script.py <function name> <role name>")
+if len(sys.argv) < 4:
+    print("Usage: python script.py <function name> <role name> <region>")
     sys.exit(1)
 
 func_name = sys.argv[1]  
 role_name = sys.argv[2]
+region = sys.argv[3]
 
-lambda_client = boto3.client('lambda', region_name='ap-southeast-1')
+lambda_client = boto3.client('lambda', region_name=region)
 #execute_role = os.getenv("LAMBDA_ROLE")
 
 iam = boto3.client('iam')

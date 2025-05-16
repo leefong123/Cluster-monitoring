@@ -1,5 +1,5 @@
 # Use official Python image as base
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Set environment variables
 #ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -13,11 +13,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY . .
+COPY myflask.py .
 
 # Expose port that Flask app will run on
 EXPOSE 8000
 
 # Command to run the Flask app
-CMD ["python", "myFlask.py"]
+CMD ["python3", "myflask.py"]
 

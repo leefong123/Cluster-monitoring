@@ -5,7 +5,7 @@ import sys
 def create_ssm_para(topic_arn):
 
     ssm_client = boto3.client('ssm')
-    response = ssm_client.put_parameter(Name='/SharePriceChecking/myapp/topic_arn', Description="SNS topic arn to be used by lambda functions", Value=topic_arn, Type='String', Overwrite=True, Tier='Standard')
+    response = ssm_client.put_parameter(Name='/app/myflask/topic_arn', Description="SNS topic arn to be used by lambda functions", Value=topic_arn, Type='String', Overwrite=True, Tier='Standard')
 
     print("Parameter store created ==> ", response) 
 
