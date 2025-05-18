@@ -27,7 +27,7 @@ receivers:
 - name: "null"
 - name: "webhook-receiver"
   webhook_configs:
-    - url: "http://192.168.244.128:5000/alert"
+    - url: "https://1i7d3juwf0.execute-api.ap-southeast-1.amazonaws.com/prod/invoke"
 route:
   group_by:
   - namespace
