@@ -6,12 +6,14 @@
 
 
 
-
   **History:**  
   <ins>18 May 2025</ins>  
 
   - Send an alert via AlertManager webhook
   - The webhook triggers an AWS API gateaway which is integrated with a Lambda function to publish to SNS and send an email to subscribed users
+  - Detailed for a step by step guide to creating AWS resources, please refer to Document.pdf
+
+[View the detailed documentation](Document.pdf)
 
   
   <ins>30 April 2025</ins>  
