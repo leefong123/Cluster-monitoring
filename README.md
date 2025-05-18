@@ -1,7 +1,19 @@
-#### Use prometheus to monitor a containerized application running on a Kubernetes cluster (Minikube).
+#### Use Prometheus to monitor a containerized application deployed in a Kubernetes cluster (Minikube).
+
+##### <ins>High Level Architecture<ins> 
+![image](https://github.com/user-attachments/assets/8692fd6f-f954-488a-8960-23e29548cff0)
+
+
+
+
 
   **History:**  
+  <ins>18 May 2025</ins>  
 
+  - Send an alert via AlertManager webhook
+  - The webhook triggers an AWS API gateaway which is integrated with a Lambda function to publish to SNS and send an email to subscribed users
+
+  
   <ins>30 April 2025</ins>  
 
    - Track HTTP requests and automate alerting when HTTP errors are detected  
