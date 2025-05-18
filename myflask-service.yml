@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myflask-service
+  labels:
+    app: myflask-service
+    #annotations: 
+    #prometheus.io/scrape: "true"
+    #prometheus.io/port: "8000"
+    #prometheus.io/path: "/metrics"
+spec:
+  selector:
+    app: myflask
+  ports:
+    - name: myflask-service-port
+      protocol: TCP
+      port: 8001
+      targetPort: 8000
+        #type: NodePort
+

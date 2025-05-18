@@ -1,42 +1,42 @@
 import boto3
-
-def get_price(stock_code, threshold):
-    # Implement the get_price function from check_price.py here to retrieve the price from Yahoo Finance. 
-    # Omit it for now to avoid unnecessary charges
-
-    price = 38   ## for testing only
-    return price
-
+import json
 
 def lambda_handler(event, context):
 
-    stock_code = event.get('stock_code', 'No stock code')
-    threshold = event.get('threshold', 'No threshold')
 
     ssm_client = boto3.client('ssm')
-    response = ssm_client.get_parameter(Name='/SharePriceChecking/myapp/topic_arn')
+    response = ssm_client.get_parameter(Name='/app/myflask/topic_arn')
 
     topic_arn = response['Parameter']['Value']
 
-    price = get_price(stock_code, threshold)
+    sns = boto3.client('sns')
 
-    if (price < threshold):
-        report = f"{stock_code} is below target ${threshold}, Price is ${price}\n"
-        sns = boto3.client('sns')
+    if 'body' in event:
+      alert_data = json.loads(event['body'])  # API Gateway
+    else:
+      alert_data = event  # Direct test
+
+    for alert in alert_data.get('alerts', []):
+        labels = alert.get('labels', {})
+        annotations = alert.get('annotations', {})
+
+        alertname = labels.get('alertname')
+        severity = labels.get('severity')
+        summary = annotations.get('summary')
+        description = annotations.get('description')
+
+        print(f"Alert: {alertname} | Severity: {severity}")
+        print(f"Summary: {summary}")
+        print(f"Description: {description}")
 
         response  = sns.publish(
             TopicArn=topic_arn,
-            Message=report,
-            Subject="Lambda Email Notification"
-        )
-        print(f"Response ==> {response}")
-        return {
-            'statusCode': 200,
-            'body': f"Message sent with ID: {response['MessageId']}"
-        }
-    else:
-        return {
-            'statusCode': 900,
-            'body': "No action is required"
-        }
+            Message=description,
+            Subject=summary )
+
+    return {
+        'statusCode': 200,
+        'body': f"Message sent with ID: {response['MessageId']}"
+    }
+
 
