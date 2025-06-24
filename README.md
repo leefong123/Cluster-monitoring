@@ -53,7 +53,7 @@
 
 or  
 
-14b. kubectl get po -n default
+14b. kubectl get po -n default -w 
 
 
 #### To run the application on your local host
